@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 //app.use(fileUpload())
-app.use(check)
-app.use(addveh)
+// app.use(check)
+// app.use(addveh)
 port=process.env.PORT||3000
 
 const multipartMiddleware = multipart();
