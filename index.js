@@ -5,6 +5,7 @@ const cloudinary = require('cloudinary');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('./db/mongoose')
+const Nexmo = require('nexmo');
 
 const Vehicle=require('./models/vehicle')
 
@@ -47,7 +48,7 @@ app.post('/addvehicle',async(req,res)=>{
     }
 })
 
-function sendmessage(mobileno,amount){
+function sendmessage(mobileno,amount,records){
     const nexmo = new Nexmo({
         apiKey: 'e99d0ebb',
         apiSecret: 'SCEmJzV4we0tHi9J',
@@ -55,9 +56,10 @@ function sendmessage(mobileno,amount){
       
       const from = 'Nexmo';
       const to = '919952121766';
-      const text = 'You have violated traffic rules these';
+      const text = 'You have violated the traffic rules.Your total fine is '+amount;
 
       nexmo.message.sendSms(from, to, text);
+      return text
 
 }
 
@@ -74,12 +76,15 @@ app.post('/check',async(req,res)=>{
         for(var i=0;i<listval.length;i++){
             sum=sum+listval[i]
         }
+        const r=sendmessage((veh.vehicleowner.details.mobileno).toString(),sum,(veh.record).toString())
+        console.log((veh.vehicleowner.details.mobileno).toString())
 
-        res.send(sum.toString())
+        //res.send(sum.toString())
+        res.send(r)
     }
 
     }catch(e){
-        res.send('Data for the vehicle not found')
+        res.send(e)
     }
     
 
