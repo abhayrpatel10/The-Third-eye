@@ -68,7 +68,7 @@ app.post('/check',async(req,res)=>{
    
     try{
         var veh=await Vehicle.findOne({vehicleno:req.body.vehicleno})
-    if(veh.record==[]){
+    if(veh.record===[]){
         res.send('No records found for this vehicle')
     }else{
         const listval=Object.values(veh.record[0])
