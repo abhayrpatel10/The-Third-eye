@@ -21,9 +21,9 @@ port=process.env.PORT||3000
 const multipartMiddleware = multipart();
 
 cloudinary.config({
-    cloud_name: 'dhw5dya3h',
-    api_key: '241646421827913',
-    api_secret: 'RSe-sJZxufTtmGnncSIscE3DugA'
+    cloud_name: 'dhc8pjk3a',
+    api_key: '513854727551353',
+    api_secret: '5G2lso3Ep70IGd3-h1ZD3J1wJOY'
 });
 
 app.post('/upload', multipartMiddleware, function(req, res) {
@@ -68,7 +68,7 @@ app.post('/check',async(req,res)=>{
    
     try{
         var veh=await Vehicle.findOne({vehicleno:req.body.vehicleno})
-    if(veh.record===[]){
+    if(veh.record==[]){
         res.send('No records found for this vehicle')
     }else{
         const listval=Object.values(veh.record[0])
