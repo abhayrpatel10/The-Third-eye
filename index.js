@@ -90,6 +90,22 @@ app.post('/check',async(req,res)=>{
 
 })
 
+app.post('/payComplete',async(req,res)=>{
+    var vehno=req.body.vehicleno
+
+    try{
+        
+
+        await Vehicle.findOneAndUpdate({'vehicleno':req.body.vehicleno},{$set:{'record':[]}})
+        res.send('You have no violation fees now')
+
+
+    }catch(e){
+        res.send(e)
+
+    }
+})
+
 
 app.listen(port,()=>{
     console.log("Listening on port "+port)
