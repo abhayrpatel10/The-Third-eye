@@ -98,12 +98,22 @@ app.post('/payComplete',async(req,res)=>{
 
         await Vehicle.findOneAndUpdate({'vehicleno':req.body.vehicleno},{$set:{'record':[]}})
         res.send('You have no violation fees now')
-
-
     }catch(e){
         res.send(e)
 
     }
+})
+
+app.post('/details',async(req,res)=>{
+
+    try{
+        var veh=await Vehicle.findOne({'vehicleno':req.body.vehicleno})
+        res.send(veh)
+
+    }catch(e){
+        res.send(e)
+    }
+   
 })
 
 
