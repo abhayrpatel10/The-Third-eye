@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index.js"
+    "start": "node index.js"
   },
   "author": "Abhay",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "form-data": "^2.5.1",
+    "mongoose": "^5.7.5",
     "node-fetch": "^2.6.0"
   }
 }
