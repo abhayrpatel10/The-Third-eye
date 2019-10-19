@@ -6,11 +6,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const vehcilerouter=require('./routes/addvehicles')
 const imagerecogrouter=require('./routes/framerecog')
+const check=require('./routes/checkforviolations')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(vehcilerouter)
 app.use(imagerecogrouter)
+app.use(check)
 app.use(cors());
 
 
