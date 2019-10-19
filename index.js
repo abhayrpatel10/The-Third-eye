@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+//app.use(fileUpload())
 
 port=process.env.PORT||3000
 
@@ -25,7 +26,7 @@ app.post('/upload', multipartMiddleware, function(req, res) {
         ocr: "adv_ocr"
       }, function(error, result) {
           if( result.info.ocr.adv_ocr.status === "complete" ) {
-            res.json(result); 
+            res.json(result.info.ocr.adv_ocr.data[0].textAnnotations[0].description); // result.info.ocr.adv_ocr.data[0].textAnnotations[0].description (more specific)
           }
       });
   });
