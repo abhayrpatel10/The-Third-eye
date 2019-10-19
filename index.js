@@ -4,11 +4,16 @@ const multipart = require('connect-multiparty');
 const cloudinary = require('cloudinary');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const addvehicle=require('./routes/addvehicles')
+const checkforviolations=require('./routes/checkforviolations')
 
+
+app.use(addvehicle)
+app.use(checkforviolations)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-//app.use(fileUpload())
+
 
 port=process.env.PORT||3000
 
